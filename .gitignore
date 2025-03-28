@@ -22,7 +22,3 @@ yarn-error.log
 /.vscode
 /.zed
 .DS_Store
-
-# Project exclude paths
-/storage/app/
-/storage/framework/
