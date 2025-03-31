@@ -42,7 +42,7 @@
                     <form method="POST" action="/logout">
                         @csrf
 
-                        <x-form-button>Log out</x-form-button>
+                        <x-form-button class="mt-4">Log out</x-form-button>
                     </form>
                 @endauth
             </div>

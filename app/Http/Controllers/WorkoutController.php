@@ -66,19 +66,19 @@ class WorkoutController extends Controller
             ->with('success', 'Workout created successfully!');
     }
 
-//    public function edit(Workout $workout)
-//    {
-//        Gate::authorize('edit', $workout);
-//
-//        $allExercises = Exercise::orderBy('name')->get();
-//
-//        $workout->load('exercises');
-//
-//        return view('workouts.edit', [
-//            'workout' => $workout,
-//            'allExercises' => $allExercises
-//        ]);
-//    }
+    public function edit(Workout $workout)
+    {
+        Gate::authorize('edit', $workout);
+
+        $allExercises = Exercise::orderBy('name')->get();
+
+        $workout->load('exercises');
+
+        return view('workouts.edit', [
+            'workout' => $workout,
+            'allExercises' => $allExercises
+        ]);
+    }
 
     public function update(Request $request, Workout $workout)
     {

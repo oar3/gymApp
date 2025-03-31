@@ -4,7 +4,7 @@
     </x-slot:heading>
 
     <div class="mb-6 flex justify-between items-center">
-        <h2 class="text-xl font-semibold text-gray-800">Workout History</h2>
+        <h2 class="text-xl font-semibold text-white-800">Workout History</h2>
         <a href="/workouts/create" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
             New Workout
         </a>
@@ -13,10 +13,10 @@
     @if($workouts->count() > 0)
         <div class="space-y-6">
             @foreach ($workouts as $workout)
-                <div class="block px-6 py-4 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-50">
+                <div class="block px-6 py-4 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-50 hover:text-gray-500">
                     <a href="/workouts/{{ $workout->id }}" class="block">
                         <div class="flex justify-between items-center">
-                            <h3 class="text-lg font-semibold text-gray-900">
+                            <h3 class="text-lg font-semibold text-white-900">
                                 {{ $workout->name ?? 'Workout on ' . $workout->date->format('M d, Y') }}
                             </h3>
                             <span class="text-sm text-gray-500">{{ $workout->date->format('F d, Y') }}</span>

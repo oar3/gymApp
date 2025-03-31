@@ -8,8 +8,8 @@
 
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
-                <h2 class="text-base/7 font-semibold text-gray-900">Create a New Workout</h2>
-                <p class="mt-1 text-sm/6 text-gray-600">Record your workout details below.</p>
+                <h2 class="text-base/7 font-bold text-gray-600">Create a New Workout</h2>
+                <p class="mt-1 text-sm/6 text-gray-500">Record your workout details below.</p>
 
                 <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div class="sm:col-span-4">
@@ -35,7 +35,7 @@
                                 id="notes"
                                 name="notes"
                                 rows="3"
-                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                                class="block w-full rounded-md border-0 py-1.5 bg-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
                             >{{ old('notes') }}</textarea>
                             <x-form-error name="notes" />
                         </div>
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="mt-10">
-                    <h3 class="text-base/7 font-semibold text-gray-900">Exercises</h3>
+                    <h3 class="text-base/7 font-semibold text-gray-600">Exercises</h3>
 
                     <div id="exercises-container">
                         <template id="exercise-template">
@@ -55,9 +55,9 @@
 
                                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-6">
                                     <div class="sm:col-span-6">
-                                        <label class="block text-sm/6 font-medium text-gray-900">Exercise</label>
+                                        <label class="block text-sm/6 font-medium text-gray-600">Exercise</label>
                                         <div class="mt-2">
-                                            <select name="exercises[INDEX][id]" required class="exercise-select block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                            <select name="exercises[INDEX][id]" required class="exercise-select block w-full rounded-md border-0 px-2 py-1.5 bg-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                                                 <option value="">Select an exercise</option>
                                                 @foreach ($exercises as $exercise)
                                                     <option value="{{ $exercise->id }}">{{ $exercise->name }} ({{ $exercise->muscle_group }})</option>
@@ -67,30 +67,30 @@
                                     </div>
 
                                     <div class="sm:col-span-2">
-                                        <label class="block text-sm/6 font-medium text-gray-900">Sets</label>
-                                        <div class="mt-2">
-                                            <input type="number" name="exercises[INDEX][sets]" min="1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" required>
+                                        <label class="block text-sm/6 font-medium  text-gray-600">Sets</label>
+                                        <div class="mt-2 bg-white block w-full rounded-md border-0">
+                                            <input type="number" name="exercises[INDEX][sets]" min="1" class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" required>
                                         </div>
                                     </div>
 
                                     <div class="sm:col-span-2">
-                                        <label class="block text-sm/6 font-medium text-gray-900">Repetitions</label>
-                                        <div class="mt-2">
-                                            <input type="number" name="exercises[INDEX][repetitions]" min="1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" required>
+                                        <label class="block text-sm/6 font-medium  text-gray-600">Repetitions</label>
+                                        <div class="mt-2 bg-white block w-full rounded-md border-0">
+                                            <input type="number" name="exercises[INDEX][repetitions]" min="1" class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" required>
                                         </div>
                                     </div>
 
                                     <div class="sm:col-span-1">
-                                        <label class="block text-sm/6 font-medium text-gray-900">Weight</label>
-                                        <div class="mt-2">
-                                            <input type="number" name="exercises[INDEX][weight]" min="0" step="0.01" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" required>
+                                        <label class="block text-sm/6 font-medium  text-gray-600">Weight</label>
+                                        <div class="mt-2 bg-white block w-full rounded-md border-0">
+                                            <input type="number" name="exercises[INDEX][weight]" min="0" step="0.01" class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" required>
                                         </div>
                                     </div>
 
                                     <div class="sm:col-span-1">
-                                        <label class="block text-sm/6 font-medium text-gray-900">Unit</label>
-                                        <div class="mt-2">
-                                            <select name="exercises[INDEX][unit]" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                        <label class="block text-sm/6 font-medium text-gray-600">Unit</label>
+                                        <div class="mt-2 bg-white block w-full rounded-md border-0">
+                                            <select name="exercises[INDEX][unit]" required class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                                                 <option value="KGs">KGs</option>
                                                 <option value="LBs">LBs</option>
                                             </select>
