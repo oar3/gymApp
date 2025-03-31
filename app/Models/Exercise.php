@@ -18,7 +18,7 @@ class Exercise extends Model
     public function workouts(): BelongsToMany
     {
         return $this->belongsToMany(Workout::class)
-            ->withPivot('sets', 'repetitions', 'weight', 'unit')
+            ->withPivot('sets', 'repetitions', 'weight', 'unit', 'name')
             ->withTimestamps();
     }
 

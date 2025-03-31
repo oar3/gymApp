@@ -11,8 +11,8 @@ Route::view('/exercises', 'exercises');
 Route::view('/standards', 'standards');
 
 // Workout Routes
-Route::get('/workouts/{workout}/edit', [WorkoutController::class, 'edit'])->name('workouts.edit')
-    ->can('edit-workout', 'workout');
+Route::get('/workouts/{workout}/edit', [WorkoutController::class, 'edit'])->name('workouts.edit');
+//    ->can('edit-workout', 'workout');
 
 Route::middleware('auth')->group(function () {
     Route::get('/workouts', [WorkoutController::class, 'index'])->name('workouts.index');

@@ -18,9 +18,11 @@ class WorkoutPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Workout $workout): bool
+    public function view(User $user, Workout $workout): Response
     {
-        //
+        return $user->id === $workout->user_id
+            ? Response::allow()
+            : Response::deny('You do not own this post.');
     }
 
     /**

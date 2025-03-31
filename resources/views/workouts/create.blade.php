@@ -109,7 +109,7 @@
         </div>
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
-            <a href="/workouts" class="text-sm/6 font-semibold text-gray-900">Cancel</a>
+            <a href="/workouts" class="text-sm/6 font-semibold text-gray-600">Cancel</a>
             <x-form-button>Save Workout</x-form-button>
         </div>
     </form>
