@@ -48,7 +48,6 @@
     </x-form-field>
 </div>
 
-{{-- Added beyond lecture instruction from form template used here (edited country option list)--}}
 <div class="mt-10 gap-y-8 sm:grid-cols-6">
     <label for="unit" class="block text-sm/6 font-medium text-gray-900">Unit</label>
     <div class="mt-2 grid grid-cols-1">

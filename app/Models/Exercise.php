@@ -12,9 +12,6 @@ class Exercise extends Model
 
     protected $fillable = ['name', 'muscle_group', 'description'];
 
-    /**
-     * The workouts that belong to the exercise.
-     */
     public function workouts(): BelongsToMany
     {
         return $this->belongsToMany(Workout::class)
@@ -62,9 +59,6 @@ class Exercise extends Model
             ->toArray();
     }
 
-    /**
-     * Scope a query to get exercises by muscle group.
-     */
     public function scopeByMuscleGroup($query, $muscleGroup)
     {
         return $query->where('muscle_group', $muscleGroup);
