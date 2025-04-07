@@ -45,7 +45,6 @@ class WorkoutController extends Controller
     {
         $validatedData = $this->getValidatedData($request);
 
-        // Create the workout
         $workout = Workout::create([
             'date' => $validatedData['date'],
             'name' => $validatedData['name'] ?? 'Workout on ' . $validatedData['date'],
@@ -53,7 +52,6 @@ class WorkoutController extends Controller
             'user_id' => Auth::id(),
         ]);
 
-        // Attach the exercises with their pivot data
         foreach ($validatedData['exercises'] as $exerciseData) {
             $workout->exercises()->attach($exerciseData['id'], [
                 'sets' => $exerciseData['sets'],
@@ -63,7 +61,7 @@ class WorkoutController extends Controller
             ]);
         }
 
-        event(new WorkoutRecorded($workout, auth()->id()));
+//        event(new WorkoutRecorded($workout, auth()->id()));
 
 //        broadcast(new WorkoutRecorded($workout))->toOthers();
 
@@ -87,7 +85,7 @@ class WorkoutController extends Controller
 
     public function update(Request $request, Workout $workout)
     {
-        Gate::authorize('edit', $workout);
+        Gate::authorize('update', $workout);
 
         $validatedData = $this->getValidatedData($request);
 

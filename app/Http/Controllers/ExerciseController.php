@@ -24,18 +24,15 @@ class ExerciseController extends Controller
     /**
      * Display a listing of the exercises.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function index(Request $request)
     {
-        // Validate user_id if present
         if ($request->has('user_id') && $request->user_id) {
-            // Only admins can view as other users
             if (!auth()->user() || !auth()->user()->is_admin) {
                 abort(403, 'Unauthorized action.');
             }
 
-            // Verify the user exists
             $user = User::find($request->user_id);
             if (!$user) {
                 return redirect()->route('exercises.index')
@@ -67,21 +64,21 @@ class ExerciseController extends Controller
 //            'user_id' => 'required|integer|exists:users,id'
         ]);
 
-//        if ($request->muscle_group === 'other' && $request->new_muscle_group) {
-//            $muscleGroup = $request->new_muscle_group;
-//        } else {
-//            $muscleGroup = $request->muscle_group;
-//        }
+        if ($request->muscle_group === 'other' && $request->new_muscle_group) {
+            $musclegroup = $request->new_muscle_group;
+        } else {
+            $musclegroup = $request->muscle_group;
+        }
 
-        Exercise::create([
+        exercise::create([
             'name' => $validated['name'],
             'muscle_group' => $validated['muscle_group'],
             'description' => $request->description,
-            'user_id' => Auth::id()
+            'user_id' => auth::id()
         ]);
 
         return redirect()->route('exercises.index')
-            ->with('success', 'Exercise created successfully!');
+            ->with('success', 'exercise created successfully!');
     }
 
     public function edit(Exercise $exercise)
@@ -105,7 +102,7 @@ class ExerciseController extends Controller
 
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:exercises,name,' . $exercise->id,
-            'muscle_group' => 'required|string|max:255|in:muscle_group',
+            'muscle_group' => 'required|string|max:255',
             'description' => 'nullable|string',
         ]);
 

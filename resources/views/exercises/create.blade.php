@@ -70,7 +70,7 @@
 
         <div class="mt-6 flex items-center justify-start gap-x-6">
             <a href="/exercises" class="text-sm/6 font-semibold text-gray-600">Cancel</a>
-            <x-form-button>Save Workout</x-form-button>
+            <x-form-button>Save Exercise</x-form-button>
         </div>
     </form>
 

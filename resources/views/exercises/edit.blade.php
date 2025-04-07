@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:heading>
-        Edit Workout
+        Edit exercise
     </x-slot:heading>
 
     <form method="POST" action="/exercises/{{ $exercise->id }}" id="edit-exercise-form">
@@ -17,8 +17,25 @@
                             <x-form-error name="name" />
                         </div>
                     </div>
+
+                    <div class="sm:col-span-4">
+                        <x-form-label for="muscle_group">Muscle Group</x-form-label>
+                        <div class="mt-2">
+                            <select id="muscle_group" name="muscle_group" class="block w-full rounded-md border-0 py-1.5 text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
+                                <option value="">{{ 'Select a group' }}</option>
+                                @foreach($muscleGroups as $group)
+                                    <option value="{{ $group }}" @if($group == $exercise->muscle_group) selected="{{ $exercise->muscle_group }}" @endif>
+                                        {{ $group }}
+                                    </option>
+                                @endforeach
+                                <option value="other" {{ old('muscle_group') == 'other' ? 'selected' : '' }}>Other (specify)</option>
+                            </select>
+                            <x-form-error name="muscle_group" />
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
 
         <div class="mt-6 flex items-center justify-between gap-x-6">
             <div class="flex items-center">
