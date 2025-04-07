@@ -13,12 +13,17 @@
             <a href="/">
                 <img src="{{ Vite::asset('resources/images/dumbbell.svg') }}" class="invert h-24 w-24 mr-15" alt="dumbbell icon">
             </a>
+            @auth
+                @if(auth()->user()->is_admin)
+                    <p>Admin View</p>
+                @endif
+            @endauth
         </div>
 
         <div class="space-x-6 font-bold font-stretch-125%">
             <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
             <x-nav-link href="/exercises" :active="request()->is('exercises')">Exercises</x-nav-link> {{-- Descriptions of exercises, correct form, muscles activated, anatomy etc. --}}
-            <x-nav-link href="/standards" :active="request()->is('standards')">Standards</x-nav-link> {{-- Compare your lifts/run times (+ section for records & pbs?) --}}
+{{--            <x-nav-link href="/standards" :active="request()->is('standards')">Standards</x-nav-link> --}}{{-- Compare your lifts/run times (+ section for records & pbs?) --}}
             @auth
                 <x-nav-link href="/workouts" :active="request()->is('workouts')">Workouts</x-nav-link> {{-- Compare your lifts/run times (+ section for records & pbs?) --}}
             @endauth

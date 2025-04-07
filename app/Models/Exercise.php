@@ -39,11 +39,28 @@ class Exercise extends Model
      *
      * @return array
      */
-    public static function getExercisesByMuscleGroup(): array
+//    public static function getExercisesByMuscleGroup(): array
+//    {
+//        return self::orderBy('muscle_group')
+//            ->orderBy('name')
+//            ->get()
+//            ->groupBy('muscle_group')
+//            ->toArray();
+//    }
+
+    public static function getExercisesByMuscleGroup(?int $userId = null): array
     {
-        return self::orderBy('muscle_group')
-            ->orderBy('name')
-            ->get()
+        $query = self::orderBy('muscle_group')
+            ->orderBy('name');
+
+        if ($userId) {
+            $query->where(function($q) use ($userId) {
+                $q->whereNull('user_id')
+                    ->orWhere('user_id', $userId);
+            });
+        }
+
+        return $query->get()
             ->groupBy('muscle_group')
             ->toArray();
     }

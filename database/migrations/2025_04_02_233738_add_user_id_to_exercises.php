@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        Schema::create('exercises', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('muscle_group');
-            $table->text('description')->nullable();
-            $table->timestamps();
+        Schema::table('exercises', function (Blueprint $table) {
+            $table->foreignId('user_id')->nullable();
+            $table->index('user_id');
         });
     }
 
@@ -26,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('exercises');
+        Schema::table('exercises', function (Blueprint $table) {
+            $table->dropColumn('user_id');
+        });
     }
 };

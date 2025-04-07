@@ -40,10 +40,16 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
         ];
     }
 
     public function workout() {
         return $this->hasMany(Workout::class);
+    }
+
+    public function exercises(): HasMany
+    {
+        return $this->hasMany(Exercise::class);
     }
 }

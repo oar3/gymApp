@@ -28,4 +28,13 @@ class Workout extends Model
             ->withPivot('sets', 'repetitions', 'weight', 'unit')
             ->withTimestamps();
     }
+
+    public function broadcastWith()
+    {
+        return [
+            'id' => $this->workout->id,
+            'name' => $this->workout->name,
+            'user_id' => $this->user_id
+        ];
+    }
 }

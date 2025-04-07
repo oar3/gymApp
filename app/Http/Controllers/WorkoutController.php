@@ -7,6 +7,7 @@ use App\Models\Workout;
 use App\Models\Exercise;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
+use App\Events\WorkoutRecorded;
 
 class WorkoutController extends Controller
 {
@@ -62,8 +63,12 @@ class WorkoutController extends Controller
             ]);
         }
 
+        event(new WorkoutRecorded($workout, auth()->id()));
+
+//        broadcast(new WorkoutRecorded($workout))->toOthers();
+
         return redirect()->route('workouts.show', $workout)
-            ->with('success', 'Workout created successfully!');
+                ->with('success', 'Workout created successfully!');
     }
 
     public function edit(Workout $workout)
