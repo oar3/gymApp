@@ -42,8 +42,7 @@
 
                 <div class="mt-10">
                     <h3 class="text-base/7 font-semibold text-gray-600">Exercises</h3>
-
-                    <div id="exercises-container">
+                    <div id="exercises-container" class="grid grid-cols-3 gap-2 sm:grid-cols-3">
                         <template id="exercise-template">
                             <div class="exercise-item mt-6 border border-gray-200 p-4 rounded-md">
                                 <div class="flex justify-between items-center mb-4">
@@ -51,7 +50,7 @@
                                     <button type="button" class="remove-exercise text-red-500 text-sm font-medium">Remove</button>
                                 </div>
 
-                                <div class="grid grid-cols-1 gap-4 sm:grid-cols-6">
+                                <div class="grid grid-cols-3 gap-4 sm:grid-cols-6">
                                     <div class="sm:col-span-6">
                                         <label class="block text-sm/6 font-medium text-gray-600">Exercise</label>
                                         <div class="mt-2">

@@ -11,6 +11,30 @@
     </div>
 
     @if($workouts->count() > 0)
+        <div class="mb-4 flex flex-wrap justify-between items-center gap-2">
+            <form method="GET" action="{{ request()->url() }}" class="flex flex-wrap items-center gap-3">
+                <div class="flex items-center gap-2 mr-2">
+                    <label for="sort-by" class="text-sm text-gray-600">Sort by:</label>
+                    <select id="sort-by" name="sort" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm" onchange="this.form.submit()">
+                        <option value="date" {{ request()->get('sort', 'date') == 'date' ? 'selected' : '' }}>Date</option>
+                        <option value="name" {{ request()->get('sort') == 'name' ? 'selected' : '' }}>Name</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <label for="direction" class="text-sm text-gray-600">Order:</label>
+                    <select id="direction" name="direction" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm" onchange="this.form.submit()">
+                        <option value="desc" {{ request()->get('direction', 'desc') == 'desc' ? 'selected' : '' }}>Descending</option>
+                        <option value="asc" {{ request()->get('direction') == 'asc' ? 'selected' : '' }}>Ascending</option>
+                    </select>
+                </div>
+
+                @if(request()->has('page'))
+                    <input type="hidden" name="page" value="{{ request()->get('page') }}">
+                @endif
+            </form>
+        </div>
+
         <div class="space-y-6">
             @foreach ($workouts as $workout)
                 <div class="block px-6 py-4 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-50 hover:text-gray-500">
@@ -52,7 +76,7 @@
             @endforeach
 
             <div class="mt-6">
-                {{ $workouts->links() }}
+                {{ $workouts->appends(request()->query())->links() }}
             </div>
         </div>
     @else

@@ -55,22 +55,30 @@
         </div>
     </div>
 
-{{--    @can('edit', $workout)--}}
-        <div class="mt-6 flex space-x-3">
-            <x-button href="/workouts/{{ $workout->id }}/edit">
-                Edit Workout
-            </x-button>
+    {{--    @can('edit', $workout)--}}
+    <div class="mt-6 flex space-x-3">
+        <x-button href="/workouts/{{ $workout->id }}/edit">
+            Edit Workout
+        </x-button>
 
-            <form method="POST" action="/workouts/{{ $workout->id }}" class="inline">
-                @csrf
-                @method('DELETE')
-                <button type="submit" onclick="return confirm('Are you sure you want to delete this workout?')"
-                        class="bg-red-600 hover:bg-red-700 text-white mt-6 py-2 px-4 rounded">
-                    Delete
-                </button>
-            </form>
-        </div>
-{{--    @endcan--}}
+        <form method="POST" action="/workouts/{{ $workout->id }}/duplicate" class="inline">
+            @csrf
+            <button type="submit"
+                    class="bg-blue-600 text-white mt-6 py-2 px-4 rounded hover:bg-blue-700">
+                Duplicate Workout
+            </button>
+        </form>
+
+        <form method="POST" action="/workouts/{{ $workout->id }}" class="inline">
+            @csrf
+            @method('DELETE')
+            <button type="submit" onclick="return confirm('Are you sure you want to delete this workout?')"
+                    class="bg-red-600 hover:bg-red-700 text-white mt-6 py-2 px-4 rounded">
+                Delete
+            </button>
+        </form>
+    </div>
+    {{--    @endcan--}}
 
     <div class="mt-6">
         <a href="/workouts" class="text-indigo-600 hover:text-indigo-500">← Back to workouts</a>

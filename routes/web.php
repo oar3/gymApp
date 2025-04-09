@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
         ->can('edit', 'exercise');
     Route::patch('/exercises/{exercise}', [ExerciseController::class, 'update'])->name('exercises.update');
 //        ->can('update', 'exercise');
+    Route::post('/workouts/{workout}/duplicate', [WorkoutController::class, 'duplicate'])->middleware('auth');
     Route::delete('/exercises/{exercise}', [ExerciseController::class, 'destroy'])->name('exercises.destroy');
 //        ->can('destroy', 'exercise');
 });

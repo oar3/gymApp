@@ -70,7 +70,7 @@ class ExerciseController extends Controller
             $musclegroup = $request->muscle_group;
         }
 
-        exercise::create([
+        Exercise::create([
             'name' => $validated['name'],
             'muscle_group' => $validated['muscle_group'],
             'description' => $request->description,

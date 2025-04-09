@@ -11,12 +11,21 @@ use App\Events\WorkoutRecorded;
 
 class WorkoutController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $workouts = Workout::with(['user', 'exercises'])
-            ->where('user_id', Auth::id())
-            ->latest()
-            ->paginate(5);
+        $sort = $request->get('sort', 'date');
+        $direction = $request->get('direction', 'desc');
+
+        $query = Workout::with(['user', 'exercises'])
+            ->where('user_id', Auth::id());
+
+        if ($sort === 'name') {
+            $query->orderBy('name', $direction);
+        } else {
+            $query->orderBy('date', $direction);
+        }
+
+        $workouts = $query->paginate(5);
 
         return view('workouts.index', [
             'workouts' => $workouts
@@ -109,6 +118,38 @@ class WorkoutController extends Controller
 
         return redirect()->route('workouts.show', $workout)
             ->with('success', 'Workout updated successfully!');
+    }
+
+//    /**
+//    *
+//    * @param  \App\Models\Workout  $workout
+//    * @return \Illuminate\Http\RedirectResponse
+//    */
+    public function duplicate(Workout $workout)
+    {
+        if ($workout->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        // Create a new workout with the same details
+        $newWorkout = $workout->replicate();
+        $newWorkout->name = $workout->name ? $workout->name . ' (Copy)' : null;
+        $newWorkout->date = now(); // Set date to today
+        $newWorkout->created_at = now();
+        $newWorkout->save();
+
+        // Copy all workout exercises with their pivot data
+        foreach ($workout->exercises as $exercise) {
+            $newWorkout->exercises()->attach($exercise->id, [
+                'sets' => $exercise->pivot->sets,
+                'repetitions' => $exercise->pivot->repetitions,
+                'weight' => $exercise->pivot->weight,
+                'unit' => $exercise->pivot->unit
+            ]);
+        }
+
+        return redirect('/workouts/' . $newWorkout->id)
+            ->with('success', 'Workout duplicated successfully.');
     }
 
     public function destroy(Workout $workout)
