@@ -13,6 +13,12 @@ Route::view('/exercises', 'exercises.index');
 //Route::view('/standards', 'standards');
 Route::view('/broadcasts', 'broadcasts.index');
 
+// User Preference Routes
+Route::middleware('auth')->group(function () {
+    Route::patch('/user/preferences', [App\Http\Controllers\UserPreferenceController::class, 'update'])
+        ->name('user.preferences.update');
+});
+
 // Exercise Routes
 Route::middleware('auth')->group(function () {
     Route::get('/exercises', [ExerciseController::class, 'index'])->name('exercises.index');

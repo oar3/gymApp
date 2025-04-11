@@ -3,8 +3,32 @@
         $exercisesByGroup = \App\Models\Exercise::getExercisesByMuscleGroup(request('user_id'));
         $users = \App\Models\User::select('id', 'email')->get();
         $selectedUser = request('user_id') ? \App\Models\User::find(request('user_id')) : null;
+
+        // Get user preference
+        $showDefaults = auth()->check() && auth()->user()->preferences ?
+            auth()->user()->preferences->show_default_exercises : true;
     @endphp
+
     @auth
+        <!-- Toggle for showing/hiding default exercises -->
+        <div class="mb-4">
+            <form method="POST" action="{{ route('user.preferences.update') }}" class="flex items-center">
+                @csrf
+                @method('PATCH')
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" name="show_default_exercises" class="sr-only peer"
+                           {{ $showDefaults ? 'checked' : '' }} onChange="this.form.submit()">
+                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer
+                        peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
+                        peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
+                        after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full
+                        after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    <span class="ms-3 text-sm font-medium text-gray-300">Show default exercises</span>
+                </label>
+            </form>
+        </div>
+
+        <!-- Admin section -->
         @if(auth()->user()->is_admin)
             <form method="get" action="{{ route('exercises.index') }}" id="select-user-exercise-form">
                 <div class="mb-4">
@@ -26,8 +50,8 @@
             @endif
             <x-divider />
         @endif
-
     @endauth
+
     <h2 class="text-lg font-semibold mb-4">Exercises by Muscle Group</h2>
 
     @auth
@@ -37,15 +61,23 @@
             </a>
         </div>
     @endauth
+
+    <!-- Display exercises by muscle group -->
     <div class="space-y-6">
         @foreach($exercisesByGroup as $muscleGroup => $exercises)
             <div>
                 <h3 class="text-md font-medium text-gray-500 mb-2">{{ $muscleGroup }}</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     @foreach($exercises as $exercise)
-                        @if(!$exercise['user_id'] || auth()->check() && (auth()->user()->id == $exercise['user_id'] || auth()->user()->is_admin))
+                        @php
+                            $isDefaultExercise = !$exercise['user_id'];
+                            $canView = !$isDefaultExercise || ($showDefaults ?? true);
+                            $canEdit = !$exercise['user_id'] || (auth()->check() && (auth()->user()->id == $exercise['user_id'] || auth()->user()->is_admin));
+                        @endphp
+
+                        @if($canView && $canEdit)
                             <a href="/exercises/{{ $exercise['id'] }}/edit">
-                                @if(!$exercise['user_id'])
+                                @if($isDefaultExercise)
                                     <div class="border border-gray-200 rounded-md p-3 bg-white/5 text-red-500">
                                         <p class="font-medium">{{ $exercise['name'] }}</p>
                                     </div>

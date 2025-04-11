@@ -23,8 +23,8 @@ class ExerciseController extends Controller
 //    }
     /**
      * Display a listing of the exercises.
-     *
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  Request  $request
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function index(Request $request)
     {
@@ -45,10 +45,7 @@ class ExerciseController extends Controller
 
     public function create()
     {
-        $muscleGroups = Exercise::select('muscle_group')
-            ->distinct()
-            ->orderBy('muscle_group')
-            ->pluck('muscle_group');
+        $muscleGroups = \App\Models\MuscleGroup::orderByRaw('user_id IS NULL DESC, name ASC')->get();
 
         return view('exercises.create', [
             'muscleGroups' => $muscleGroups,
@@ -59,26 +56,31 @@ class ExerciseController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:exercises,name',
-            'muscle_group' => 'required|string|max:255',
+            'muscle_group_option' => 'required|in:existing,new',
+            'muscle_group' => 'required_if:muscle_group_option,existing',
+            'new_muscle_group' => 'required_if:muscle_group_option,new|max:255',
             'description' => 'nullable|string',
-//            'user_id' => 'required|integer|exists:users,id'
         ]);
 
-        if ($request->muscle_group === 'other' && $request->new_muscle_group) {
-            $musclegroup = $request->new_muscle_group;
+        if ($request->muscle_group_option === 'new') {
+            $muscleGroup = \App\Models\MuscleGroup::firstOrCreate(
+                ['name' => $request->new_muscle_group, 'user_id' => auth()->id()],
+                ['created_at' => now(), 'updated_at' => now()]
+            );
         } else {
-            $musclegroup = $request->muscle_group;
+            $muscleGroup = \App\Models\MuscleGroup::findOrFail($request->muscle_group);
         }
 
-        Exercise::create([
+        \App\Models\Exercise::create([
             'name' => $validated['name'],
-            'muscle_group' => $validated['muscle_group'],
+            'muscle_group' => $muscleGroup->name,
+            'muscle_group_id' => $muscleGroup->id,
             'description' => $request->description,
-            'user_id' => auth::id()
+            'user_id' => auth()->id()
         ]);
 
         return redirect()->route('exercises.index')
-            ->with('success', 'exercise created successfully!');
+            ->with('success', 'Exercise created successfully!');
     }
 
     public function edit(Exercise $exercise)

@@ -42,7 +42,7 @@
 
                 <div class="mt-10">
                     <h3 class="text-base/7 font-semibold text-gray-600">Exercises</h3>
-                    <div id="exercises-container" class="grid grid-cols-3 gap-2 sm:grid-cols-3">
+                    <div id="exercises-container" class="grid grid-cols-1 gap-2 sm:grid-cols-3">
                         <template id="exercise-template">
                             <div class="exercise-item mt-6 border border-gray-200 p-4 rounded-md">
                                 <div class="flex justify-between items-center mb-4">
@@ -50,11 +50,11 @@
                                     <button type="button" class="remove-exercise text-red-500 text-sm font-medium">Remove</button>
                                 </div>
 
-                                <div class="grid grid-cols-3 gap-4 sm:grid-cols-6">
+                                <div class="grid grid-cols-1 gap-4 sm:grid-cols-6">
                                     <div class="sm:col-span-6">
                                         <label class="block text-sm/6 font-medium text-gray-600">Exercise</label>
                                         <div class="mt-2">
-                                            <select name="exercises[INDEX][id]" required class="exercise-select block w-full rounded-md border-0 px-3 py-1.5 bg-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                            <select name="exercises[INDEX][id]" class="exercise-select block w-full rounded-md border-0 px-3 py-1.5 bg-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" required>
                                                 <option value="">Select an exercise</option>
                                                 @foreach ($allExercises as $exercise)
                                                     <option value="{{ $exercise['id'] }}">{{ $exercise['name'] }} ({{ $exercise['muscle_group'] }})</option>

@@ -48,8 +48,18 @@ class User extends Authenticatable
         return $this->hasMany(Workout::class);
     }
 
+    public function muscleGroups()
+    {
+        return $this->hasMany(MuscleGroup::class);
+    }
+
     public function exercises(): HasMany
     {
         return $this->hasMany(Exercise::class);
+    }
+
+    public function preferences()
+    {
+        return $this->hasOne(UserPreference::class);
     }
 }

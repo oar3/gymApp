@@ -39,44 +39,61 @@ class Exercise extends Model
      *
      * @return array
      */
-//    public static function getExercisesByMuscleGroup(): array
-//    {
-//        return self::orderBy('muscle_group')
-//            ->orderBy('name')
-//            ->get()
-//            ->groupBy('muscle_group')
-//            ->toArray();
-//    }
+    public function muscleGroup()
+    {
+        return $this->belongsTo(MuscleGroup::class);
+    }
 
+// Update getExercisesByMuscleGroup method to use muscle_group_id
     public static function getExercisesByMuscleGroup(?int $userId = null): array
     {
-        $query = self::orderBy('muscle_group')
+        $query = self::with('muscleGroup')
             ->orderBy('name');
 
         if ($userId) {
-            $query->where(function($q) use ($userId) {
-                $q->whereNull('user_id')
-                    ->orWhere('user_id', $userId);
+            // Get the user's preferences
+            $user = User::find($userId);
+            $showDefaults = $user && $user->preferences ? $user->preferences->show_default_exercises : true;
+
+            // Filter exercises based on ownership and preferences
+            $query->where(function($q) use ($userId, $showDefaults) {
+                $q->where('user_id', $userId);
+
+                if ($showDefaults) {
+                    $q->orWhereNull('user_id');
+                }
             });
         }
 
-        return $query->get()
-            ->groupBy('muscle_group')
-            ->toArray();
+        $exercises = $query->get();
+
+        // Group by muscle group name from relationship
+        return $exercises->groupBy(function($exercise) {
+            return $exercise->muscleGroup ? $exercise->muscleGroup->name : $exercise->muscle_group;
+        })->toArray();
     }
 
-    /**
-     * Get all unique muscle groups.
-     *
-     * @return array
-     */
-    public static function getMuscleGroups(): array
+// Update getMuscleGroups method to use the MuscleGroup model
+    public static function getMuscleGroups(?int $userId = null): array
     {
-        return self::select('muscle_group')
-            ->distinct()
-            ->orderBy('muscle_group')
-            ->pluck('muscle_group')
-            ->toArray();
+        $query = MuscleGroup::query()->orderBy('name');
+
+        if ($userId) {
+            $user = User::find($userId);
+            $showDefaults = $user && $user->preferences ? $user->preferences->show_default_exercises : true;
+
+            $query->where(function($q) use ($userId, $showDefaults) {
+                $q->where('user_id', $userId);
+
+                if ($showDefaults) {
+                    $q->orWhereNull('user_id');
+                }
+            });
+        } else {
+            $query->whereNull('user_id');
+        }
+
+        return $query->pluck('name')->toArray();
     }
 
     /**
