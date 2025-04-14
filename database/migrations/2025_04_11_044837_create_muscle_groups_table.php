@@ -11,9 +11,9 @@ return new class extends Migration
         Schema::create('muscle_groups', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('user_id')->nullable(); // Null means default/system
+            $table->foreignId('user_id')->nullable();
             $table->timestamps();
-            $table->unique(['name', 'user_id']); // Unique group names per user
+            $table->unique(['name', 'user_id']);
         });
     }
 

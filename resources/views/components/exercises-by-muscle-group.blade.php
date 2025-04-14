@@ -4,30 +4,11 @@
         $users = \App\Models\User::select('id', 'email')->get();
         $selectedUser = request('user_id') ? \App\Models\User::find(request('user_id')) : null;
 
-        // Get user preference
         $showDefaults = auth()->check() && auth()->user()->preferences ?
             auth()->user()->preferences->show_default_exercises : true;
     @endphp
 
     @auth
-        <!-- Toggle for showing/hiding default exercises -->
-        <div class="mb-4">
-            <form method="POST" action="{{ route('user.preferences.update') }}" class="flex items-center">
-                @csrf
-                @method('PATCH')
-                <label class="relative inline-flex items-center cursor-pointer">
-                    <input type="checkbox" name="show_default_exercises" class="sr-only peer"
-                           {{ $showDefaults ? 'checked' : '' }} onChange="this.form.submit()">
-                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer
-                        peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
-                        peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
-                        after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full
-                        after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-                    <span class="ms-3 text-sm font-medium text-gray-300">Show default exercises</span>
-                </label>
-            </form>
-        </div>
-
         <!-- Admin section -->
         @if(auth()->user()->is_admin)
             <form method="get" action="{{ route('exercises.index') }}" id="select-user-exercise-form">
@@ -54,6 +35,25 @@
 
     <h2 class="text-lg font-semibold mb-4">Exercises by Muscle Group</h2>
 
+    <!-- Toggle for showing/hiding default exercises -->
+    <div class="mb-4">
+        <form method="POST" action="{{ route('user.preferences.update') }}" class="flex items-center">
+            @csrf
+            @method('PATCH')
+            <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" name="show_default_exercises" class="sr-only peer"
+                       {{ $showDefaults ? 'checked' : '' }} onChange="this.form.submit()">
+                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer
+                        peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
+                        peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
+                        after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full
+                        after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
+                </div>
+                <span class="ms-3 text-sm font-medium text-gray-300">Show common exercises</span>
+            </label>
+        </form>
+    </div>
+
     @auth
         <div>
             <a href="{{ route('exercises.create') }}" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 mb-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
@@ -63,7 +63,7 @@
     @endauth
 
     <!-- Display exercises by muscle group -->
-    <div class="space-y-6">
+    <div class="space-y-6 mb-15">
         @foreach($exercisesByGroup as $muscleGroup => $exercises)
             <div>
                 <h3 class="text-md font-medium text-gray-500 mb-2">{{ $muscleGroup }}</h3>

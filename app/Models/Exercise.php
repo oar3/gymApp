@@ -44,18 +44,15 @@ class Exercise extends Model
         return $this->belongsTo(MuscleGroup::class);
     }
 
-// Update getExercisesByMuscleGroup method to use muscle_group_id
     public static function getExercisesByMuscleGroup(?int $userId = null): array
     {
         $query = self::with('muscleGroup')
             ->orderBy('name');
 
         if ($userId) {
-            // Get the user's preferences
             $user = User::find($userId);
             $showDefaults = $user && $user->preferences ? $user->preferences->show_default_exercises : true;
 
-            // Filter exercises based on ownership and preferences
             $query->where(function($q) use ($userId, $showDefaults) {
                 $q->where('user_id', $userId);
 
@@ -67,13 +64,11 @@ class Exercise extends Model
 
         $exercises = $query->get();
 
-        // Group by muscle group name from relationship
         return $exercises->groupBy(function($exercise) {
             return $exercise->muscleGroup ? $exercise->muscleGroup->name : $exercise->muscle_group;
         })->toArray();
     }
 
-// Update getMuscleGroups method to use the MuscleGroup model
     public static function getMuscleGroups(?int $userId = null): array
     {
         $query = MuscleGroup::query()->orderBy('name');

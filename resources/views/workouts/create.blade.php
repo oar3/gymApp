@@ -52,8 +52,8 @@
                                     <button type="button" class="remove-exercise text-red-500 text-sm font-medium">Remove</button>
                                 </div>
 
-                                <div class="grid grid-cols-1 gap-4 sm:grid-cols-6">
-                                    <div class="sm:col-span-6">
+                                <div class="grid grid-cols-1 gap-4 sm:grid-cols-8">
+                                    <div class="sm:col-span-8">
                                         <label class="block text-sm/6 font-medium text-gray-600">Exercise</label>
                                         <div class="mt-2">
                                             <select name="exercises[INDEX][id]" required class="exercise-select block w-full rounded-md border-0 px-2 py-1.5 bg-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
@@ -65,28 +65,28 @@
                                         </div>
                                     </div>
 
-                                    <div class="sm:col-span-1">
+                                    <div class="sm:col-span-2">
                                         <label class="block text-sm/6 font-medium  text-gray-600">Sets</label>
-                                        <div class="mt-2 bg-white block w-full min-w-[30px] rounded-md border-0">
+                                        <div class="mt-2 bg-white block w-full rounded-md border-0">
                                             <input type="number" name="exercises[INDEX][sets]" min="1" value="3" class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" required>
                                         </div>
                                     </div>
 
-                                    <div class="sm:col-span-1">
+                                    <div class="sm:col-span-2">
                                         <label class="block text-sm/6 font-medium  text-gray-600">Repetitions</label>
-                                        <div class="mt-2 bg-white block w-full min-w-[60px] rounded-md border-0">
+                                        <div class="mt-2 bg-white block w-full rounded-md border-0">
                                             <input type="number" name="exercises[INDEX][repetitions]" min="1" value="10" class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" required>
                                         </div>
                                     </div>
 
-                                    <div class="sm:col-span-1">
+                                    <div class="sm:col-span-2">
                                         <label class="block text-sm/6 font-medium  text-gray-600">Weight</label>
-                                        <div class="mt-2 bg-white block w-full min-w-[60px] rounded-md border-0">
+                                        <div class="mt-2 bg-white block w-full rounded-md border-0">
                                             <input type="number" name="exercises[INDEX][weight]" min="0" step="0.01" value="20" class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" required>
                                         </div>
                                     </div>
 
-                                    <div class="sm:col-span-1">
+                                    <div class="sm:col-span-2">
                                         <label class="block text-sm/6 font-medium text-gray-600">Unit</label>
                                         <div class="mt-2 bg-white block w-full rounded-md border-0">
                                             <select name="exercises[INDEX][unit]" required class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
@@ -109,7 +109,7 @@
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
             <a href="/workouts" class="text-sm/6 font-semibold text-gray-600">Cancel</a>
-            <x-form-button>Save Workout</x-form-button>
+            <x-form-button class="mb-36">Save Workout</x-form-button>
         </div>
     </form>
 

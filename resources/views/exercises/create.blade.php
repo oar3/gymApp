@@ -13,7 +13,6 @@
                 </p>
 
                 <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                    <!-- Exercise Name -->
                     <div class="sm:col-span-4">
                         <x-form-label for="name">Exercise Name</x-form-label>
                         <div class="mt-2">
@@ -22,7 +21,6 @@
                         </div>
                     </div>
 
-                    <!-- Muscle Group Selection -->
                     <div class="sm:col-span-4">
                         <x-form-label for="muscle_group_option">Muscle Group</x-form-label>
                         <div class="mt-2">
@@ -35,13 +33,11 @@
                         </div>
                     </div>
 
-                    <!-- Existing Muscle Group (shown when option is selected) -->
                     <div class="sm:col-span-4 {{ old('muscle_group_option') == 'existing' ? '' : 'hidden' }}" id="existing_muscle_group_container">
                         <x-form-label for="muscle_group">Select Muscle Group</x-form-label>
                         <div class="mt-2">
                             <select id="muscle_group" name="muscle_group" class="block w-full rounded-md border-0 py-1.5 text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 <option value="">{{ 'Select a group' }}</option>
-                                <!-- Default muscle groups -->
                                 <optgroup label="Default Groups">
                                     @foreach($muscleGroups->where('user_id', null) as $group)
                                         <option value="{{ $group->id }}" {{ old('muscle_group') == $group->id ? 'selected' : '' }}>
@@ -50,7 +46,6 @@
                                     @endforeach
                                 </optgroup>
 
-                                <!-- User's custom muscle groups -->
                                 @if($muscleGroups->where('user_id', auth()->id())->count() > 0)
                                     <optgroup label="My Custom Groups">
                                         @foreach($muscleGroups->where('user_id', auth()->id()) as $group)
@@ -65,7 +60,6 @@
                         </div>
                     </div>
 
-                    <!-- New Muscle Group (shown when option is selected) -->
                     <div class="sm:col-span-4 {{ old('muscle_group_option') == 'new' ? '' : 'hidden' }}" id="new_muscle_group_container">
                         <x-form-label for="new_muscle_group">New Muscle Group</x-form-label>
                         <div class="mt-2">
@@ -74,7 +68,6 @@
                         </div>
                     </div>
 
-                    <!-- Description (Optional) -->
                     <div class="col-span-full">
                         <x-form-label for="description">Description (Optional)</x-form-label>
                         <div class="mt-2">

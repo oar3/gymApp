@@ -23,7 +23,6 @@ class MuscleGroup extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Helper to check if this is a default muscle group
     public function isDefault(): bool
     {
         return is_null($this->user_id);
