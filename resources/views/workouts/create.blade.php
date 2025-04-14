@@ -44,7 +44,7 @@
 
                 <div class="mt-10">
                     <h3 class="text-base/7 font-semibold text-gray-600">Exercises</h3>
-                    <div id="exercises-container" class="grid grid-cols-3 gap-2 sm:grid-cols-3">
+                    <div id="exercises-container" class="grid grid-cols-3 gap-2 sm:grid-cols-3 max-sm:grid max-sm:grid-cols-1">
                         <template id="exercise-template">
                             <div class="exercise-item mt-6 border border-gray-200 p-4 rounded-md">
                                 <div class="flex justify-between items-center mb-4">
