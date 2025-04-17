@@ -22,5 +22,9 @@
 
             <x-muscle-group-tags />
         </section>
+
+        <section>
+            <x-live-feed></x-live-feed>
+        </section>
     </div>
 </x-layout>

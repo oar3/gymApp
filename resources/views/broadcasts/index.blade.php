@@ -93,7 +93,6 @@
                 const newWorkout = document.createElement('div');
                 newWorkout.className = 'bg-gray-700 rounded-md p-4 border-l-4 border-amber-400 animate-fade-in';
 
-                // Format the data from event
                 const userName = e.user_name || 'A user';
                 const workoutName = e.workout?.name || 'New workout';
                 const exerciseCount = e.workout?.exercise_count || '?';
@@ -114,7 +113,7 @@
                             <p class="text-sm text-gray-300 mt-1">
                                 ${exerciseCount} ${exerciseCount === 1 ? 'exercise' : 'exercises'}
                             </p>
-                            <p class="text-xs text-gray-400 mt-1">Just now • ${timestamp}</p>
+                            <p class="text-xs text-gray-400 mt-1">• ${timestamp}</p>
                         </div>
                     </div>
                 `;
