@@ -76,12 +76,16 @@
                         @endphp
 
                         @if($canView && $canEdit)
-                            <a href="/exercises/{{ $exercise['id'] }}/edit">
                                 @if($isDefaultExercise)
+                                    <!-- Only allow admins to view default (common) exercises as anchor tags -->
+                                    @if(auth()->user()->is_admin)
+                                        <a href="/exercises/{{ $exercise['id'] }}/edit">
+                                    @endif
                                     <div class="border border-gray-200 rounded-md p-3 bg-white/5 text-red-500">
                                         <p class="font-medium">{{ $exercise['name'] }}</p>
                                     </div>
                                 @else
+                                    <a href="/exercises/{{ $exercise['id'] }}/edit">
                                     <div class="border border-gray-200 rounded-md p-3 text-cyan-700">
                                         <p class="font-medium">{{ $exercise['name'] }}</p>
                                     </div>

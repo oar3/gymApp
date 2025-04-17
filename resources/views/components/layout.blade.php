@@ -39,7 +39,7 @@
                 @auth
                     <header class="bg-black shadow-sm">
                         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 sm:flex sm:justify-between">
-                            <x-button href="/workouts/create" class="max-md:mt-0">Create Workout</x-button>
+                            <x-button href="/workouts/create" class="max-md:mt-0 hover:bg-gray-400">Create Workout</x-button>
                         </div>
                     </header>
 
