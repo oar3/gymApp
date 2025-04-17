@@ -24,16 +24,16 @@
                     <div class="sm:col-span-4">
                         <x-form-label for="muscle_group_option">Muscle Group</x-form-label>
                         <div class="mt-2">
-                            <select id="muscle_group_option" name="muscle_group_option" class="block w-full rounded-md border-0 py-1.5 text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
+                            <select id="muscle_group_option" name="muscle_group_option" onchange="muscleGroupSelect()" class="block w-full rounded-md border-0 py-1.5 text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
                                 <option value="">Select option</option>
-                                <option value="existing" {{ old('muscle_group_option') == 'existing' ? 'selected' : '' }}>Use existing muscle group</option>
-                                <option value="new" {{ old('muscle_group_option') == 'new' ? 'selected' : '' }}>Create new muscle group</option>
+                                <option id="muscle_group_existing" value="existing" {{ old('muscle_group_option') == 'existing' ? 'selected' : '' }}>Use existing muscle group</option>
+                                <option id="muscle_group_new" value="new" {{ old('muscle_group_option') == 'new' ? 'selected' : '' }}>Create new muscle group</option>
                             </select>
                             <x-form-error name="muscle_group_option" />
                         </div>
                     </div>
 
-                    <div class="sm:col-span-4 {{ old('muscle_group_option') == 'existing' ? '' : 'hidden' }}" id="existing_muscle_group_container">
+                    <div class="sm:col-span-4" id="existing_muscle_group_container" style="{{ old('muscle_group_option') == 'existing' ? '' : 'display: none;' }}">
                         <x-form-label for="muscle_group">Select Muscle Group</x-form-label>
                         <div class="mt-2">
                             <select id="muscle_group" name="muscle_group" class="block w-full rounded-md border-0 py-1.5 text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -60,7 +60,7 @@
                         </div>
                     </div>
 
-                    <div class="sm:col-span-4 {{ old('muscle_group_option') == 'new' ? '' : 'hidden' }}" id="new_muscle_group_container">
+                    <div class="sm:col-span-4" id="new_muscle_group_container" style="{{ old('muscle_group_option') == 'new' ? '' : 'display: none;' }}">
                         <x-form-label for="new_muscle_group">New Muscle Group</x-form-label>
                         <div class="mt-2">
                             <x-form-input type="text" name="new_muscle_group" id="new_muscle_group" :value="old('new_muscle_group')" />
@@ -92,4 +92,26 @@
             <x-form-button>Save Exercise</x-form-button>
         </div>
     </form>
+
+    <script>
+        function muscleGroupSelect() {
+            const selectedOption = document.getElementById("muscle_group_option").value;
+
+            const existingContainer = document.getElementById("existing_muscle_group_container");
+            const newContainer = document.getElementById("new_muscle_group_container");
+
+            existingContainer.style.display = "none";
+            newContainer.style.display = "none";
+
+            if (selectedOption === "existing") {
+                existingContainer.style.display = "block";
+                document.getElementById("muscle_group").required = true;
+                document.getElementById("new_muscle_group").required = false;
+            } else if (selectedOption === "new") {
+                newContainer.style.display = "block";
+                document.getElementById("new_muscle_group").required = true;
+                document.getElementById("muscle_group").required = false;
+            }
+        }
+    </script>
 </x-layout>

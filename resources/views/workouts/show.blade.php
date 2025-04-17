@@ -57,7 +57,8 @@
 
     {{--    @can('edit', $workout)--}}
     <div class="mt-6 flex space-x-3">
-        <x-button href="/workouts/{{ $workout->id }}/edit">
+        <x-button href="/workouts/{{ $workout->id }}/edit"
+                  class="bg-blue-600 text-white mt-6 py-2 px-4 rounded hover:bg-blue-700">
             Edit Workout
         </x-button>
 

@@ -32,8 +32,8 @@ class Workout extends Model
     public function broadcastWith()
     {
         return [
-            'id' => $this->workout->id,
-            'name' => $this->workout->name,
+            'id' => $this->id,
+            'name' => $this->name,
             'user_id' => $this->user_id
         ];
     }

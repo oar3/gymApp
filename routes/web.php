@@ -1,11 +1,16 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Broadcast;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\ExerciseController;
+use App\Models\Workout;
 use App\Events\WorkoutRecorded;
+use App\Http\Controllers\BroadcastController;
 
 Route::view('/', 'welcome');
 Route::view('/about', 'about');
@@ -55,7 +60,8 @@ Route::middleware('auth')->group(function () {
 //    });
 //});
 
-Route::get('/broadcasts', [App\Http\Controllers\BroadcastController::class, 'index'])->name('broadcasts');
+Route::get('/broadcasts', [BroadcastController::class, 'index'])->name('broadcasts');
+
 
 // Authentication Routes
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');

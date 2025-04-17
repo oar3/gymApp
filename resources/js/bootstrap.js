@@ -21,3 +21,11 @@ window.Echo = new Echo({
     cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
     forceTLS: true
 });
+
+window.Echo.connector.pusher.connection.bind('connected', () => {
+    console.log('Connected to Pusher!');
+});
+
+window.Echo.connector.pusher.connection.bind('error', (err) => {
+    console.error('Pusher connection error:', err);
+});

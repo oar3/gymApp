@@ -7,6 +7,7 @@ use App\Models\Workout;
 use App\Models\Exercise;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use App\Events\WorkoutRecorded;
 
 class WorkoutController extends Controller
@@ -50,6 +51,12 @@ class WorkoutController extends Controller
         ]);
     }
 
+    /**
+     * Store a newly created workout in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $validatedData = $this->getValidatedData($request);
@@ -70,12 +77,14 @@ class WorkoutController extends Controller
             ]);
         }
 
-//        event(new WorkoutRecorded($workout, auth()->id()));
+        // Load relationships needed for the event
+        $workout->load(['user', 'exercises']);
 
-//        broadcast(new WorkoutRecorded($workout))->toOthers();
+        // Broadcast the event
+        event(new \App\Events\WorkoutRecorded($workout, Auth::id()));
 
         return redirect()->route('workouts.show', $workout)
-                ->with('success', 'Workout created successfully!');
+            ->with('success', 'Workout created successfully!');
     }
 
     public function edit(Workout $workout)
