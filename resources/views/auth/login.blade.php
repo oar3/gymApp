@@ -34,8 +34,14 @@
 
         <div>
             <div class="mt-6 flex items-center justify-start gap-x-6">
-                <p>Don't have an account?</p>
-                <a href="/register" class="block text-blue-900">Sign up here</a>
+                <div class="flex items-center justify-start gap-x-6">
+                    <p>Don't have an account?</p>
+                    <a href="/register" class="block text-blue-900">Sign up here</a>
+                </div><br>
+                <div class="flex items-center justify-start gap-x-6">
+                    <p>Forgot your password?</p>
+                    <a href="/forgot-password" class="block text-blue-900">Reset here</a>
+                </div>
             </div>
 
             <div class="-mt-7 flex items-center justify-end gap-x-6">

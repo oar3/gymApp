@@ -48,7 +48,13 @@
 
                         <x-form-button class="mt-4 max-sm:ml-4 max-md:ml-6 max-md:mt-0">Log out</x-form-button>
                     </form>
-                @endauth
+
+                    <div class="ml-4 mt-4">
+                        <x-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.*')" >
+                            Profile
+                        </x-nav-link>
+                    </div>
+                    @endauth
             </div>
         </div>
     </nav>

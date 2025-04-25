@@ -62,4 +62,20 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserPreference::class);
     }
+
+    /**
+     * Get the email address used for password resets.
+     */
+    public function getEmailForPasswordReset(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * Get the amount of seconds that the reset token should be considered valid.
+     */
+    public function getPasswordResetTokenExpireInSeconds(): int
+    {
+        return 60 * 60; // 1 hour
+    }
 }

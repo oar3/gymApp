@@ -11,6 +11,8 @@ use App\Http\Controllers\ExerciseController;
 use App\Models\Workout;
 use App\Events\WorkoutRecorded;
 use App\Http\Controllers\BroadcastController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResetPasswordController;
 
 Route::view('/', 'welcome');
 Route::view('/about', 'about');
@@ -62,6 +64,26 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/broadcasts', [BroadcastController::class, 'index'])->name('broadcasts');
 
+//Profile and password routes
+Route::middleware('auth')->group(function () {
+    // Profile routes
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    // Password routes
+    Route::get('/profile/password', [ProfileController::class, 'editPassword'])->name('password.edit');
+    Route::patch('/profile/password', [ProfileController::class, 'updatePassword'])->name('password.update');
+});
+
+// Mail routes
+Route::get('test', function () {
+    \Illuminate\Support\Facades\Mail::to('otis@klever.co.uk')->send(
+        new \App\Mail\UserCreated()
+    );
+
+    return 'done';
+});
 
 // Authentication Routes
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
@@ -70,3 +92,20 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::get('/login', [SessionController::class, 'create'])->name('login');
 Route::post('/login', [SessionController::class, 'store']);
 Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
+
+// Password Reset Routes
+Route::get('/forgot-password', [ResetPasswordController::class, 'create'])
+    ->middleware('guest')
+    ->name('password.request');
+
+Route::post('/forgot-password', [ResetPasswordController::class, 'store'])
+    ->middleware('guest')
+    ->name('password.email');
+
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'reset'])
+    ->middleware('guest')
+    ->name('password.reset');
+
+Route::post('/reset-password', [ResetPasswordController::class, 'update'])
+    ->middleware('guest')
+    ->name('password.update');
