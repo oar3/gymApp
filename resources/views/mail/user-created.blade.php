@@ -1,142 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
-<<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome to Gym App</title>
     <style>
-        /* Base styles */
         body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
             margin: 0;
             padding: 0;
+            background-color: #f8f8f8;
         }
-
-        /* Layout */
-        .px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
-        .max-w-\[986px\] { max-width: 986px; }
-        .mx-auto { margin-left: auto; margin-right: auto; }
-        .mt-10 { margin-top: 2.5rem; }
-        .my-8 { margin-top: 2rem; margin-bottom: 2rem; }
-        .p-6 { padding: 1.5rem; }
-        .mt-1 { margin-top: 0.25rem; }
-        .mt-4 { margin-top: 1rem; }
-        .mt-6 { margin-top: 1.5rem; }
-        .ml-2 { margin-left: 0.5rem; }
-        .space-x-4 > * + * { margin-left: 1rem; }
-        .p-3 { padding: 0.75rem; }
-        .p-4 { padding: 1rem; }
-        .px-4 { padding-left: 1rem; padding-right: 1rem; }
-        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-
-        /* Grid */
-        .grid { display: grid; }
-        .gap-4 { gap: 1rem; }
-        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-
-        /* Flex */
-        .flex { display: flex; }
-        .flex-col { flex-direction: column; }
-        .items-center { align-items: center; }
-        .justify-between { justify-content: space-between; }
-        .inline-flex { display: inline-flex; }
-
-        /* Typography */
-        .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
-        .font-bold { font-weight: 700; }
-        .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
-        .font-semibold { font-weight: 600; }
-        .font-medium { font-weight: 500; }
-
-        /* Colors */
-        .bg-black { background-color: #000000; }
-        .text-white { color: #ffffff; }
-        .text-indigo-700 { color: #4338ca; }
-        .bg-white { background-color: #ffffff; }
-        .bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-stops)); }
-        .from-indigo-600 { --tw-gradient-from: #4f46e5; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(79, 70, 229, 0)); }
-        .to-blue-700 { --tw-gradient-to: #1d4ed8; }
-        .bg-white\/10 { background-color: rgba(255, 255, 255, 0.1); }
-        .bg-white\/20 { background-color: rgba(255, 255, 255, 0.2); }
-        .text-white\/80 { color: rgba(255, 255, 255, 0.8); }
-        .text-white\/70 { color: rgba(255, 255, 255, 0.7); }
-
-        /* Sizing */
-        .h-8 { height: 2rem; }
-        .w-8 { width: 2rem; }
-        .h-4 { height: 1rem; }
-        .w-4 { width: 1rem; }
-
-        /* Borders */
-        .rounded-lg { border-radius: 0.5rem; }
-        .rounded-md { border-radius: 0.375rem; }
-        .rounded-full { border-radius: 9999px; }
-
-        /* Effects */
-        .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
-        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
-
-        /* Transitions */
-        .transition-colors { transition-property: color, background-color, border-color, fill, stroke; }
-        .hover\:bg-indigo-50:hover { background-color: #eef2ff; }
-
-        /* Responsive */
-        @media (min-width: 768px) {
-            .md\:flex-row { flex-direction: row; }
-            .md\:mt-0 { margin-top: 0; }
-            .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background: linear-gradient(to right, #4F46E5, #1d4ed8);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin: -20px -20px 20px;
+        }
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            display: block;
+        }
+        .content {
+            padding: 0 20px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4F46E5;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .feature-box {
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .feature-title {
+            font-weight: bold;
+            margin-top: 0;
+            color: #4F46E5;
+        }
+        .welcome-banner {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            vertical-align: top;
+            padding: 10px;
+        }
+        .icon-circle {
+            background-color: #4F46E5;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
         }
     </style>
 </head>
-<body class="bg-black text-white">
-<div class="px-10 max-w-[986px] mx-auto mt-10">
-    <!-- Welcome Banner -->
-    <div class="bg-gradient-to-r from-indigo-600 to-blue-700 rounded-lg shadow-lg p-6 my-8">
-        <div class="flex flex-col md:flex-row items-center justify-between">
-            <div class="flex items-center space-x-4">
-                <div class="bg-white/20 p-3 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                </div>
-                <div>
-                    <h2 class="text-xl font-bold text-white">
-                        Welcome, {{$user->first_name}}!
-                    </h2>
-                    <p class="text-white/80 mt-1">
-                        Thank you for joining our fitness community. Your fitness journey starts now!
-                    </p>
-                </div>
-            </div>
+<body>
+<div class="container">
+    <div class="header">
+        <!-- Dumbbell icon embedded inline -->
+        <svg class="logo" fill="#FFFFFF" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 0 485.535 485.535" xml:space="preserve">
+            <g>
+                <g id="_x35__13_">
+                    <g>
+                        <path d="M55.465,123.228c-15.547,0-28.159,12.608-28.159,28.161v56.673C11.653,211.908,0,225.928,0,242.765
+                            c0,16.842,11.652,30.861,27.306,34.707v56.666c0,15.555,12.612,28.16,28.159,28.16c15.546,0,28.16-12.605,28.16-28.16V151.389
+                            C83.625,135.837,71.011,123.228,55.465,123.228z"/>
+                        <path d="M334.498,65.278c-23.092,0-41.811,18.719-41.811,41.812v93.864h-12.801h-60.585h-19.625l-6.827-0.163V107.09
+                            c0-23.092-18.72-41.812-41.813-41.812c-23.091,0-41.812,18.719-41.812,41.812v271.355c0,23.093,18.721,41.812,41.812,41.812
+                            c23.094,0,41.813-18.719,41.813-41.812v-93.653c0,0,4.501-0.211,6.827-0.211h19.625h60.585h12.801v93.864
+                            c0,23.093,18.719,41.812,41.811,41.812c23.094,0,41.812-18.719,41.812-41.812V107.089
+                            C376.311,83.998,357.592,65.278,334.498,65.278z"/>
+                        <path d="M458.229,208.062v-56.673c0-15.552-12.613-28.161-28.158-28.161c-15.547,0-28.16,12.608-28.16,28.161v182.749
+                            c0,15.555,12.613,28.16,28.16,28.16c15.545,0,28.158-12.605,28.158-28.16v-56.666c15.654-3.846,27.307-17.865,27.307-34.707
+                            C485.535,225.927,473.883,211.908,458.229,208.062z"/>
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <h1>Welcome to Gym App</h1>
+    </div>
 
-            <div class="mt-4 md:mt-0">
-                <a href="/workouts/create" class="inline-flex items-center px-4 py-2 bg-white text-indigo-700 rounded-md font-semibold text-sm shadow-sm hover:bg-indigo-50 transition-colors">
-                    Create Your First Workout
-                    <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
+    <div class="content">
+        <div class="welcome-banner">
+            <h2>Hello, {{$user->first_name}}!</h2>
+            <p>Thank you for joining our fitness community. Your fitness journey starts now!</p>
+
+            <p style="text-align: center;">
+                <a href="{{ url('/workouts/create') }}" class="button">Create Your First Workout</a>
+            </p>
         </div>
 
-        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="bg-white/10 p-4 rounded-lg">
-                <h3 class="text-white font-medium">Track Your Progress</h3>
-                <p class="text-white/70 text-sm mt-1">Log workouts and monitor your strength improvements over time.</p>
-            </div>
-            <div class="bg-white/10 p-4 rounded-lg">
-                <h3 class="text-white font-medium">Explore Exercises</h3>
-                <p class="text-white/70 text-sm mt-1">Discover new exercises or create custom ones specific to your routine.</p>
-            </div>
-            <div class="bg-white/10 p-4 rounded-lg">
-                <h3 class="text-white font-medium">Stay Consistent</h3>
-                <p class="text-white/70 text-sm mt-1">Build the habit by regularly logging your workouts.</p>
-            </div>
-        </div>
+        <table>
+            <tr>
+                <td>
+                    <div class="feature-box">
+                        <div class="icon-circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="#FFFFFF">
+                                <path d="M10 2C5.59 2 2 5.59 2 10s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm-.5-9v4.5H13l-3.5-4.5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Track Your Progress</h3>
+                        <p>Log workouts and monitor your strength improvements over time.</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="feature-box">
+                        <div class="icon-circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="#FFFFFF">
+                                <path d="M10 4a6 6 0 100 12 6 6 0 000-12zm0 10a4 4 0 110-8 4 4 0 010 8zm6-10a1 1 0 100 2 1 1 0 000-2zM5 14a1 1 0 100 2 1 1 0 000-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Explore Exercises</h3>
+                        <p>Discover new exercises or create custom ones specific to your routine.</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="feature-box">
+                        <div class="icon-circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="#FFFFFF">
+                                <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 14a6 6 0 110-12 6 6 0 010 12zm1-6.41V4h-2v4.59l3 3 1.41-1.41-2.41-2.42z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Stay Consistent</h3>
+                        <p>Build the habit by regularly logging your workouts.</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
 
-        <!-- Optional custom content would go here -->
+        <p>Ready to get started? Here's what you can do next:</p>
+        <ul>
+            <li>Browse our <a href="{{ url('/exercises') }}" style="color: #4F46E5; text-decoration: none;">exercise library</a></li>
+            <li>Set up your <a href="{{ url('/profile') }}" style="color: #4F46E5; text-decoration: none;">profile</a></li>
+            <li>Create your first <a href="{{ url('/workouts/create') }}" style="color: #4F46E5; text-decoration: none;">workout plan</a></li>
+        </ul>
+
+        <p>If you have any questions, feel free to reach out to our support team.</p>
+
+        <p>Happy training,<br>The Gym App Team</p>
+    </div>
+
+    <div class="footer">
+        <p>&copy; {{ date('Y') }} Gym App. All rights reserved.</p>
+        <p>
+            <a href="{{ url('/terms') }}" style="color: #666; text-decoration: none; margin: 0 5px;">Terms</a> |
+            <a href="{{ url('/privacy') }}" style="color: #666; text-decoration: none; margin: 0 5px;">Privacy</a> |
+            <a href="{{ url('/contact') }}" style="color: #666; text-decoration: none; margin: 0 5px;">Contact</a>
+        </p>
     </div>
 </div>
 </body>
