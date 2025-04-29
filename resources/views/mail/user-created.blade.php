@@ -95,7 +95,7 @@
 <div class="container">
     <div class="header">
         <!-- Using $message->embed for the logo image -->
-        <img src="{{ $message->embed(public_path('resources/images/dumbbell.svg')) }}" alt="Gym App Logo" class="logo">
+        <img src="{{ $message->embed(public_path('build/assets/dumbbell-DnflnhPi.svg')) }}" alt="Gym App Logo" class="logo">
         <h1>Welcome to Gym App</h1>
     </div>
 
@@ -115,7 +115,7 @@
                     <div class="feature-box">
                         <div class="icon-circle">
                             <!-- Using $message->embed for feature icons -->
-                            <img src="{{ $message->embed(public_path('images/track-icon.png')) }}" alt="Track Icon" width="20" height="20">
+{{--                            <img src="{{ $message->embed(public_path('images/track-icon.png')) }}" alt="Track Icon" width="20" height="20">--}}
                         </div>
                         <h3 class="feature-title">Track Your Progress</h3>
                         <p>Log workouts and monitor your strength improvements over time.</p>
@@ -126,7 +126,7 @@
                 <td>
                     <div class="feature-box">
                         <div class="icon-circle">
-                            <img src="{{ $message->embed(public_path('images/explore-icon.png')) }}" alt="Explore Icon" width="20" height="20">
+{{--                            <img src="{{ $message->embed(public_path('images/explore-icon.png')) }}" alt="Explore Icon" width="20" height="20">--}}
                         </div>
                         <h3 class="feature-title">Explore Exercises</h3>
                         <p>Discover new exercises or create custom ones specific to your routine.</p>
@@ -137,7 +137,7 @@
                 <td>
                     <div class="feature-box">
                         <div class="icon-circle">
-                            <img src="{{ $message->embed(public_path('images/consistency-icon.png')) }}" alt="Consistency Icon" width="20" height="20">
+{{--                            <img src="{{ $message->embed(public_path('images/consistency-icon.png')) }}" alt="Consistency Icon" width="20" height="20">--}}
                         </div>
                         <h3 class="feature-title">Stay Consistent</h3>
                         <p>Build the habit by regularly logging your workouts.</p>
@@ -160,7 +160,7 @@
 
     <div class="footer">
         <!-- Using $message->embed for footer logo -->
-        <img src="{{ $message->embed(public_path('images/small-logo.png')) }}" alt="Small Logo" width="30" height="30">
+{{--        <img src="{{ $message->embed(public_path('images/small-logo.png')) }}" alt="Small Logo" width="30" height="30">--}}
         <p>&copy; {{ date('Y') }} Gym App. All rights reserved.</p>
         <p>
             <a href="{{ url('/terms') }}" style="color: #666; text-decoration: none; margin: 0 5px;">Terms</a> |
