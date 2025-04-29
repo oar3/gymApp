@@ -1,10 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Gym App</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Base styles */
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Layout */
+        .px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
+        .max-w-\[986px\] { max-width: 986px; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .mt-10 { margin-top: 2.5rem; }
+        .my-8 { margin-top: 2rem; margin-bottom: 2rem; }
+        .p-6 { padding: 1.5rem; }
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .ml-2 { margin-left: 0.5rem; }
+        .space-x-4 > * + * { margin-left: 1rem; }
+        .p-3 { padding: 0.75rem; }
+        .p-4 { padding: 1rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+
+        /* Grid */
+        .grid { display: grid; }
+        .gap-4 { gap: 1rem; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+
+        /* Flex */
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .inline-flex { display: inline-flex; }
+
+        /* Typography */
+        .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+        .font-bold { font-weight: 700; }
+        .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+        .font-semibold { font-weight: 600; }
+        .font-medium { font-weight: 500; }
+
+        /* Colors */
+        .bg-black { background-color: #000000; }
+        .text-white { color: #ffffff; }
+        .text-indigo-700 { color: #4338ca; }
+        .bg-white { background-color: #ffffff; }
+        .bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-stops)); }
+        .from-indigo-600 { --tw-gradient-from: #4f46e5; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(79, 70, 229, 0)); }
+        .to-blue-700 { --tw-gradient-to: #1d4ed8; }
+        .bg-white\/10 { background-color: rgba(255, 255, 255, 0.1); }
+        .bg-white\/20 { background-color: rgba(255, 255, 255, 0.2); }
+        .text-white\/80 { color: rgba(255, 255, 255, 0.8); }
+        .text-white\/70 { color: rgba(255, 255, 255, 0.7); }
+
+        /* Sizing */
+        .h-8 { height: 2rem; }
+        .w-8 { width: 2rem; }
+        .h-4 { height: 1rem; }
+        .w-4 { width: 1rem; }
+
+        /* Borders */
+        .rounded-lg { border-radius: 0.5rem; }
+        .rounded-md { border-radius: 0.375rem; }
+        .rounded-full { border-radius: 9999px; }
+
+        /* Effects */
+        .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+
+        /* Transitions */
+        .transition-colors { transition-property: color, background-color, border-color, fill, stroke; }
+        .hover\:bg-indigo-50:hover { background-color: #eef2ff; }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .md\:flex-row { flex-direction: row; }
+            .md\:mt-0 { margin-top: 0; }
+            .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+    </style>
 </head>
 <body class="bg-black text-white">
 <div class="px-10 max-w-[986px] mx-auto mt-10">
