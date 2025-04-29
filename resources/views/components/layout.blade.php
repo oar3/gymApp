@@ -8,7 +8,7 @@
 </head>
 <body class="bg-black text-white">
 <div class="px-10">
-    <nav class="flex justify-between items-center py-4 border-b border-white/12">
+    <nav class="flex justify-between items-center py-1 border-b border-white/12">
         <div class="grid grid-cols-1">
             @auth
                 @if(auth()->user()->is_admin)
@@ -20,7 +20,7 @@
             </a>
         </div>
 
-        <div class="space-x-6 font-bold font-stretch-125% max-md:grid max-md:ml-5 max-md:space-y-6 max-md:mt-5">
+        <div class="space-x-5 font-bold font-stretch-125% max-md:grid max-md:ml-5 max-md:space-y-6 max-md:mt-5">
             <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
             <x-nav-link href="/exercises" :active="request()->is('exercises')">Exercises</x-nav-link> {{-- Descriptions of exercises, correct form, muscles activated, anatomy etc. --}}
 {{--            <x-nav-link href="/standards" :active="request()->is('standards')">Standards</x-nav-link> --}}{{-- Compare your lifts/run times (+ section for records & pbs?) --}}
@@ -37,6 +37,12 @@
                 @endguest
 
                 @auth
+                    <div>
+                        <x-button class="bg-indigo-700 hover:bg-indigo-600" href="{{ route('profile.show') }}" :active="request()->routeIs('profile.*')" >
+                            Profile
+                        </x-button>
+                    </div>
+
                     <header class="bg-black shadow-sm">
                         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 sm:flex sm:justify-between">
                             <x-button href="/workouts/create" class="max-md:mt-0 hover:bg-gray-400">Create Workout</x-button>
@@ -46,15 +52,9 @@
                     <form method="POST" action="/logout">
                         @csrf
 
-                        <x-form-button class="mt-4 max-sm:ml-4 max-md:ml-6 max-md:mt-0">Log out</x-form-button>
+                        <x-form-button class="bg-red-600 mt-4 hover:bg-red-500 max-sm:ml-4 max-md:ml-6 max-md:mt-0">Log out</x-form-button>
                     </form>
-
-                    <div class="ml-4 mt-4">
-                        <x-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.*')" >
-                            Profile
-                        </x-nav-link>
-                    </div>
-                    @endauth
+                @endauth
             </div>
         </div>
     </nav>

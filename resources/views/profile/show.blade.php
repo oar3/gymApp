@@ -41,9 +41,11 @@
                         <h3 class="font-medium">Password</h3>
                         <p class="mt-2 text-gray-500 text-sm">Update the password for your account</p>
                     </div>
-                    <a href="{{ route('password.edit') }}" class="text-indigo-600 hover:text-indigo-500">
-                        Change Password
-                    </a>
+                    <div>
+                        <a href="{{ route('password.edit') }}" class="mt-4 text-indigo-600 hover:text-indigo-500">
+                            Change Password
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
