@@ -19,7 +19,7 @@
                 </div>
                 <div>
                     <h2 class="text-xl font-bold text-white">
-                        Welcome, John!
+                        Welcome, {{$user->first_name}}!
                     </h2>
                     <p class="text-white/80 mt-1">
                         Thank you for joining our fitness community. Your fitness journey starts now!

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class RegisteredUserController extends Controller
 {
@@ -24,6 +25,11 @@ class RegisteredUserController extends Controller
 
         // create user
         $user = User::create($attributes);
+
+        // welcome email
+        Mail::send('mail.user-created', ['user' => $user], function ($message) use ($user) {
+            $message->to($user->email);
+        });
 
         // log in
         Auth::login($user);

@@ -18,8 +18,7 @@ class UserCreated extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(
-    )
+    public function __construct()
     {
     }
 
@@ -29,7 +28,7 @@ class UserCreated extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('gymapp@klever.co.uk', 'Gym App'),
+            from: new Address(config('MAIL_FROM_ADDRESS'), 'Gym App'),
             to: new Address('$user->email', '$user->firstName $user->lastName'),
             subject: 'User Created',
         );
