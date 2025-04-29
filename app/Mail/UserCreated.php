@@ -15,26 +15,42 @@ class UserCreated extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
-
     /**
      * Create a new message instance.
-     *
-     * @param User $user
      */
-    public function __construct(User $user)
+    public function __construct()
     {
-        $this->user = $user;
     }
 
     /**
-     * Build the message.
-     *
-     * @return $this
+     * Get the message envelope.
      */
-    public function build()
+    public function envelope(): Envelope
     {
-        return $this->subject('Welcome to Gym App')
-            ->view('mail.user-created');
+        return new Envelope(
+//            from: new Address(config('MAIL_FROM_ADDRESS'), 'Gym App'),
+            to: new Address('$user->email', '$user->firstName $user->lastName'),
+            subject: 'User Created',
+        );
+    }
+
+    /**
+     * Get the message content definition.
+     */
+    public function content(): Content
+    {
+        return new Content(
+            view: 'mail.user-created',
+        );
+    }
+
+    /**
+     * Get the attachments for the message.
+     *
+     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     */
+    public function attachments(): array
+    {
+        return [];
     }
 }
