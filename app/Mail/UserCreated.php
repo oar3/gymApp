@@ -35,6 +35,6 @@ class UserCreated extends Mailable
     public function build()
     {
         return $this->subject('Welcome to Gym App')
-            ->view('emails.welcome-with-embed');
+            ->view('emails.user-created');
     }
 }
