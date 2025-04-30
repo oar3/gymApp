@@ -20,6 +20,8 @@ Route::view('/about', 'about');
 Route::view('/exercises', 'exercises.index');
 //Route::view('/standards', 'standards');
 Route::view('/broadcasts', 'broadcasts.index');
+//Mail test route
+Route::view('/mail-test', 'mail.test');
 
 // User Preference Routes
 Route::middleware('auth')->group(function () {

@@ -94,8 +94,7 @@
 <body>
 <div class="container">
     <div class="header">
-        <!-- Using $message->embed for the logo image -->
-{{--        <img src="{{$message->embed(public_path() . '/images/dumbbell.svg'}}" alt="Gym App Logo" class="logo">--}}
+        <img src="{{ Vite::asset('resources/images/dumbbell.svg') }}" class="invert h-24 w-24 mr-15" alt="dumbbell icon">
         <p></p>
         <h1>Welcome to Gym App</h1>
     </div>
