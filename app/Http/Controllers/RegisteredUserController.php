@@ -34,14 +34,6 @@ class RegisteredUserController extends Controller
             ->subject('Welcome!');
         });
 
-        $resetUrl = 'https://bbc.co.uk/';
-
-//        Mail::send('mail.reset-password', ['url' => $resetUrl, 'user' => $user], function ($message) use ($user) {
-//            $message->to($user->email)
-//                ->subject('Welcome');
-//        });
-
-
         // log in
         Auth::login($user);
 
