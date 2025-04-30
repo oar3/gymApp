@@ -95,7 +95,6 @@
 <div class="container">
     <div class="header">
         <!-- Using $message->embed for the logo image -->
-        $message =
         <svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
              width="800px" height="800px" viewBox="0 0 485.535 485.535"
              xml:space="preserve">
