@@ -27,9 +27,9 @@ class RegisteredUserController extends Controller
         $user = User::create($attributes);
 
         // welcome email
-        Mail::send('mail.user-created', ['user' => $user], function ($message) use ($user) {
-            $message->to($user->email);
-        });
+//        Mail::send('mail.user-created', ['user' => $user], function ($message) use ($user) {
+//            $message->to($user->email);
+//        });
 
         // log in
         Auth::login($user);
