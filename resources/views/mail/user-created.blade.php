@@ -92,82 +92,83 @@
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="header">
-        <!-- Using $message->embed for the logo image -->
-        <img src="{{ $message->embed(public_path('build/assets/dumbbell-DnflnhPi.svg')) }}" alt="Gym App Logo" class="logo">
-        <h1>Welcome to Gym App</h1>
-    </div>
+{{--<div class="container">--}}
+{{--    <div class="header">--}}
+{{--        <!-- Using $message->embed for the logo image -->--}}
+{{--        <img src="{{ $message->embed(public_path('build/assets/dumbbell-DnflnhPi.svg')) }}" alt="Gym App Logo" class="logo">--}}
+{{--        <h1>Welcome to Gym App</h1>--}}
+{{--    </div>--}}
 
-    <div class="content">
-        <div class="welcome-banner">
-            <h2>Hello, {{$user->first_name}}!</h2>
-            <p>Thank you for joining our fitness community. Your fitness journey starts now!</p>
+{{--    <div class="content">--}}
+{{--        <div class="welcome-banner">--}}
+{{--            <h2>Hello, {{$user->first_name}}!</h2>--}}
+{{--            <p>Thank you for joining our fitness community. Your fitness journey starts now!</p>--}}
 
-            <p style="text-align: center;">
-                <a href="{{ url('/workouts/create') }}" class="button">Create Your First Workout</a>
-            </p>
-        </div>
+{{--            <p style="text-align: center;">--}}
+{{--                <a href="{{ url('/workouts/create') }}" class="button">Create Your First Workout</a>--}}
+{{--            </p>--}}
+{{--        </div>--}}
 
-        <table>
-            <tr>
-                <td>
-                    <div class="feature-box">
-                        <div class="icon-circle">
-                            <!-- Using $message->embed for feature icons -->
+{{--        <table>--}}
+{{--            <tr>--}}
+{{--                <td>--}}
+{{--                    <div class="feature-box">--}}
+{{--                        <div class="icon-circle">--}}
+{{--                            <!-- Using $message->embed for feature icons -->--}}
 {{--                            <img src="{{ $message->embed(public_path('images/track-icon.png')) }}" alt="Track Icon" width="20" height="20">--}}
-                        </div>
-                        <h3 class="feature-title">Track Your Progress</h3>
-                        <p>Log workouts and monitor your strength improvements over time.</p>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="feature-box">
-                        <div class="icon-circle">
+{{--                        </div>--}}
+{{--                        <h3 class="feature-title">Track Your Progress</h3>--}}
+{{--                        <p>Log workouts and monitor your strength improvements over time.</p>--}}
+{{--                    </div>--}}
+{{--                </td>--}}
+{{--            </tr>--}}
+{{--            <tr>--}}
+{{--                <td>--}}
+{{--                    <div class="feature-box">--}}
+{{--                        <div class="icon-circle">--}}
 {{--                            <img src="{{ $message->embed(public_path('images/explore-icon.png')) }}" alt="Explore Icon" width="20" height="20">--}}
-                        </div>
-                        <h3 class="feature-title">Explore Exercises</h3>
-                        <p>Discover new exercises or create custom ones specific to your routine.</p>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="feature-box">
-                        <div class="icon-circle">
+{{--                        </div>--}}
+{{--                        <h3 class="feature-title">Explore Exercises</h3>--}}
+{{--                        <p>Discover new exercises or create custom ones specific to your routine.</p>--}}
+{{--                    </div>--}}
+{{--                </td>--}}
+{{--            </tr>--}}
+{{--            <tr>--}}
+{{--                <td>--}}
+{{--                    <div class="feature-box">--}}
+{{--                        <div class="icon-circle">--}}
 {{--                            <img src="{{ $message->embed(public_path('images/consistency-icon.png')) }}" alt="Consistency Icon" width="20" height="20">--}}
-                        </div>
-                        <h3 class="feature-title">Stay Consistent</h3>
-                        <p>Build the habit by regularly logging your workouts.</p>
-                    </div>
-                </td>
-            </tr>
-        </table>
+{{--                        </div>--}}
+{{--                        <h3 class="feature-title">Stay Consistent</h3>--}}
+{{--                        <p>Build the habit by regularly logging your workouts.</p>--}}
+{{--                    </div>--}}
+{{--                </td>--}}
+{{--            </tr>--}}
+{{--        </table>--}}
 
-        <p>Ready to get started? Here's what you can do next:</p>
-        <ul>
-            <li>Browse our <a href="{{ url('/exercises') }}" style="color: #4F46E5; text-decoration: none;">exercise library</a></li>
-            <li>Set up your <a href="{{ url('/profile') }}" style="color: #4F46E5; text-decoration: none;">profile</a></li>
-            <li>Create your first <a href="{{ url('/workouts/create') }}" style="color: #4F46E5; text-decoration: none;">workout plan</a></li>
-        </ul>
+{{--        <p>Ready to get started? Here's what you can do next:</p>--}}
+{{--        <ul>--}}
+{{--            <li>Browse our <a href="{{ url('/exercises') }}" style="color: #4F46E5; text-decoration: none;">exercise library</a></li>--}}
+{{--            <li>Set up your <a href="{{ url('/profile') }}" style="color: #4F46E5; text-decoration: none;">profile</a></li>--}}
+{{--            <li>Create your first <a href="{{ url('/workouts/create') }}" style="color: #4F46E5; text-decoration: none;">workout plan</a></li>--}}
+{{--        </ul>--}}
 
-        <p>If you have any questions, feel free to reach out to our support team.</p>
+{{--        <p>If you have any questions, feel free to reach out to our support team.</p>--}}
 
-        <p>Happy training,<br>The Gym App Team</p>
-    </div>
+{{--        <p>Happy training,<br>The Gym App Team</p>--}}
+{{--    </div>--}}
 
-    <div class="footer">
-        <!-- Using $message->embed for footer logo -->
+{{--    <div class="footer">--}}
+{{--        <!-- Using $message->embed for footer logo -->--}}
 {{--        <img src="{{ $message->embed(public_path('images/small-logo.png')) }}" alt="Small Logo" width="30" height="30">--}}
-        <p>&copy; {{ date('Y') }} Gym App. All rights reserved.</p>
-        <p>
-            <a href="{{ url('/terms') }}" style="color: #666; text-decoration: none; margin: 0 5px;">Terms</a> |
-            <a href="{{ url('/privacy') }}" style="color: #666; text-decoration: none; margin: 0 5px;">Privacy</a> |
-            <a href="{{ url('/contact') }}" style="color: #666; text-decoration: none; margin: 0 5px;">Contact</a>
-        </p>
-    </div>
-</div>
+{{--        <p>&copy; {{ date('Y') }} Gym App. All rights reserved.</p>--}}
+{{--        <p>--}}
+{{--            <a href="{{ url('/terms') }}" style="color: #666; text-decoration: none; margin: 0 5px;">Terms</a> |--}}
+{{--            <a href="{{ url('/privacy') }}" style="color: #666; text-decoration: none; margin: 0 5px;">Privacy</a> |--}}
+{{--            <a href="{{ url('/contact') }}" style="color: #666; text-decoration: none; margin: 0 5px;">Contact</a>--}}
+{{--        </p>--}}
+{{--    </div>--}}
+{{--</div>--}}
+<p>Dear {{$user->first_name}}</p>
 </body>
 </html>

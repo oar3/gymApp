@@ -27,12 +27,12 @@ class RegisteredUserController extends Controller
         // create user
         $user = User::create($attributes);
 
-        dd($user);
 
         // welcome email
-//        Mail::send('mail.user-created', ['user' => $user], function ($message) use ($user) {
-//            $message->to($user->email);
-//        });
+        Mail::send('mail.user-created', ['user' => $user], function ($message) use ($user) {
+            $message->to($user->email)
+            ->subject('Welcome!');
+        });
 
         $resetUrl = 'https://bbc.co.uk/';
 
