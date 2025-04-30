@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UserCreated;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,8 @@ class RegisteredUserController extends Controller
 //        Mail::send('mail.user-created', ['user' => $user], function ($message) use ($user) {
 //            $message->to($user->email);
 //        });
+        Mail::to($user)->send(new UserCreated($user));
+
 
         // log in
         Auth::login($user);

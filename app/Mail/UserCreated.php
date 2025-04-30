@@ -28,9 +28,9 @@ class UserCreated extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-//            from: new Address(config('MAIL_FROM_ADDRESS'), 'Gym App'),
-//            to: new Address('$user->email', '$user->firstName $user->lastName'),
-//            subject: 'User Created',
+            from: new Address(config('MAIL_FROM_ADDRESS'), 'Gym App'),
+            to: new Address('$user->email', '$user->firstName $user->lastName'),
+            subject: 'User Created',
         );
     }
 
