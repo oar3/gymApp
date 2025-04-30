@@ -88,7 +88,7 @@ Route::middleware('auth')->group(function () {
 
     // Password routes
     Route::get('/profile/password', [ProfileController::class, 'editPassword'])->name('password.edit');
-    Route::patch('/profile/password', [ProfileController::class, 'updatePassword'])->name('password.update');
+    Route::post('/profile/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 });
 
 // Mail routes

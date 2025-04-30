@@ -3,7 +3,7 @@
         Change Password
     </x-slot:heading>
 
-    <form method="POST" action="{{ route('password.update') }}">
+    <form method="POST" action="password">
         @csrf
 
         <div class="space-y-12">

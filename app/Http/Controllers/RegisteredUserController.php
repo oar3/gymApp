@@ -24,6 +24,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', Password::min(8), 'confirmed'], // password_confirmation
         ]);
 
+
         // create user
         $user = User::create($attributes);
 

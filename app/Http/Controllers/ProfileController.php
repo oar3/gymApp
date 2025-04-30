@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-    use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\Hash;
-    use Illuminate\Validation\Rules\Password;
-    use Illuminate\Validation\ValidationException;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -39,16 +41,16 @@ class ProfileController extends Controller
         return view('profile.password');
     }
 
-    public function updatePassword(Request $request)
+    public function updatePassword(Request $request): RedirectResponse
     {
         $request->validate([
             'current_password' => ['required', 'current_password'],
             'password' => ['required', Password::min(8), 'confirmed'],
         ]);
 
-        $request->user()->update([
+        $request->user()->fill([
             'password' => Hash::make($request->password),
-        ]);
+        ])->save();
 
         return redirect()->route('profile.show')
             ->with('success', 'Password updated successfully.');
