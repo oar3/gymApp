@@ -95,7 +95,8 @@
 <div class="container">
     <div class="header">
         <!-- Using $message->embed for the logo image -->
-        <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/dumbbell.png')))}}" alt="Gym App Logo" class="logo">
+{{--        <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/dumbbell.png')))}}" alt="Gym App Logo" class="logo">--}}
+        <img src="https://gymapp-master-6al0dw.laravel.cloud/images/dumbbell.png" alt="Gym App Logo" class="logo">
         <p></p>
         <h1>Welcome to Gym App</h1>
     </div>
