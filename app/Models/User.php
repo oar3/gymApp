@@ -58,6 +58,11 @@ class User extends Authenticatable
         return $this->hasMany(Exercise::class);
     }
 
+    public function templates(): HasMany
+    {
+        return $this->hasMany(Template::class);
+    }
+
     public function preferences()
     {
         return $this->hasOne(UserPreference::class);

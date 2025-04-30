@@ -13,6 +13,7 @@ use App\Events\WorkoutRecorded;
 use App\Http\Controllers\BroadcastController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\TemplateController;
 
 Route::view('/', 'welcome');
 Route::view('/about', 'about');
@@ -51,6 +52,18 @@ Route::middleware('auth')->group(function () {
         ->can('edit', 'workout');
     Route::patch('/workouts/{workout}', [WorkoutController::class, 'update'])->name('workouts.update');
     Route::delete('/workouts/{workout}', [WorkoutController::class, 'destroy'])->name('workouts.destroy');
+});
+
+// Template Routes
+Route::middleware('auth')->group(function () {
+    Route::get('/templates', [TemplateController::class, 'index'])->name('templates.index');
+    Route::get('/templates/create', [TemplateController::class, 'create'])->name('templates.create');
+    Route::post('/templates', [TemplateController::class, 'store'])->name('templates.store');
+    Route::get('/templates/{template}', [TemplateController::class, 'show'])->name('templates.show');
+    Route::get('/templates/{template}/edit', [TemplateController::class, 'edit'])->name('templates.edit');
+    Route::patch('/templates/{template}', [TemplateController::class, 'update'])->name('templates.update');
+    Route::delete('/templates/{template}', [TemplateController::class, 'destroy'])->name('templates.destroy');
+    Route::get('/templates/{template}/create-workout', [TemplateController::class, 'createWorkout'])->name('templates.create-workout');
 });
 
 // Broadcast Routes
