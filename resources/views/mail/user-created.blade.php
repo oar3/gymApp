@@ -95,7 +95,7 @@
 <div class="container">
     <div class="header">
         <!-- Using $message->embed for the logo image -->
-{{--        <img src="{{ $message->embed(public_path('build/assets/dumbbell-DnflnhPi.svg')) }}" alt="Gym App Logo" class="logo">--}}
+        <img src="{{$message->embed(public_path() . '/images/dumbbell.svg'}}" alt="Gym App Logo" class="logo">
         <h1>Welcome to Gym App</h1>
     </div>
 
